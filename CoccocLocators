@@ -28,11 +28,52 @@ class NewCampaignPage(BasePage):
 	CAMPAIGN_BUDGET = (By.NAME, "spendings_limit")
 	CAMPAIGN_TRACKING = (By.NAME, "tracking_enabled")
 
-	'''Display attributes
+	'''Display campaigns attributes
 		- Banner new tab
 		- Banner search
 		- Browser skin '''
+
 	CAMPAIGN_BIDTYPE = (By.NAME, "payment_type")
 	CAMPAIGN_FREQUENCY = (By.NAME, "shows_per_user")
 	CAMPAIGN_FREQUENCY_PERIOD = (By.NAME, "shows_per_user_period")
 
+class CampaignPage(BasePage):
+	def in_campaign_page(self):
+		'''Verify that we're in campaign management page '''
+		return "/quang-cao" in self.driver.current_url
+
+	CREATE_AD = (By.CLASS_NAME, "orange-btn")
+
+class NewAdPage(BasePage):
+	'''Common ads attributes '''
+	#STEP 1: Basic information
+
+	AD_NAME = (By.NAME, "title")
+	AD_LINK = (By.NAME, "url")
+	NEXT = (By.XPATH, '''//button[contains(@class, "orange-btn change-step")]"''')
+
+	'''Display ads attribute '''
+	AD_IMAGE = (By.CLASS_NAME, "file-button")
+
+	#STEP 2: Targeting options
+	#GEOGRAPHY:
+	GEO_NATIONWIDE = (By.XPATH, '''//*[@id="step2"]/div[2]/div[1]/div[1]/div[2]/div/div[1]''')	#Target nationwide
+	GEO_REGION = (By.XPATH, '''//*[@id="step2"]/div[2]/div[1]/div[1]/div[2]/div/div[2]''')
+
+	#TIME SCHEDULE:
+	AD_FREQUENCY = (By.ID, "shows_per_user")
+	AD_FREQUENCY_PERIOD = (By.ID, "shows_per_user_period")
+
+	#STEP 3: Ad specific
+
+class Step3(BasePage):
+	#Search Type (SEM + Search Banner):
+	
+	#Keyword:
+	KEYWORD_BOX = (By.ID, "newPhrase")
+
+	#Topic:
+	# TOPIC = [TO BE DEVELOPED]
+
+	#Demographic: Age & Gender
+	#DEMOGRAPHIC = [TO BE DEVELOPED]
