@@ -1,0 +1,38 @@
+from selenium.webdriver.common.by import By
+
+class BasePage(object):
+	def __init__(self, driver):
+		self.driver = driver
+
+class Homepage(BasePage):
+	LOGIN_BUTTON = (By.ID, "sign-in" )
+
+class LoginForm(BasePage):
+	EMAIL = (By.ID, "email")
+	PASSWORD = (By.ID, "password")
+	SUBMIT_BTTN = (By.NAME, "btnSubmit")
+
+# class AloForm(BasePage):
+
+
+class MainAccountPage(BasePage):
+	''' This should include navigations on Campaign Page '''
+	NEW_CAMPAIGN = (By.LINK_TEXT, "Tạo chiến dịch mới")
+
+class NewCampaignPage(BasePage):
+	'''Common attributes '''
+	CAMPAIGN_TYPE = (By.NAME, "type")
+	CAMPAIGN_NAME = (By.NAME, "name")
+	CAMPAIGN_SDATE = (By.NAME, "start_date")
+	CAMPAIGN_EDATE = (By.NAME, "end_date")
+	CAMPAIGN_BUDGET = (By.NAME, "spendings_limit")
+	CAMPAIGN_TRACKING = (By.NAME, "tracking_enabled")
+
+	'''Display attributes
+		- Banner new tab
+		- Banner search
+		- Browser skin '''
+	CAMPAIGN_BIDTYPE = (By.NAME, "payment_type")
+	CAMPAIGN_FREQUENCY = (By.NAME, "shows_per_user")
+	CAMPAIGN_FREQUENCY_PERIOD = (By.NAME, "shows_per_user_period")
+
